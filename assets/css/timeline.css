@@ -61,16 +61,22 @@ html {
 
 @media (min-width: 1000px) {
     #timeline .demo-card-wrapper {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -ms-flex-flow: column wrap;
-        flex-flow: column wrap;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 180px;
+        row-gap: 90px;
         width: 1170px;
-        height: var(--timeline-height);
         margin: 0 auto;
+    }
+
+    #timeline .demo-card {
+        max-width: 450px;
+        height: 400px;
+        margin: 0;
+    }
+
+    #timeline .demo-card:nth-child(2) {
+        margin-top: 180px;
     }
 }
 
@@ -116,11 +122,11 @@ html {
     #timeline .demo-card {
         max-width: 450px;
         height: 400px;
-        margin: 45px 90px;
+        margin: 0;
     }
 
     #timeline .demo-card:nth-child(odd) {
-        margin-right: 45px;
+        margin-right: 0;
     }
 
     #timeline .demo-card:nth-child(odd) .head::after {
@@ -134,7 +140,7 @@ html {
     }
 
     #timeline .demo-card:nth-child(even) {
-        margin-left: 45px;
+        margin-left: 0;
     }
 
     #timeline .demo-card:nth-child(even) .head::after {
@@ -148,7 +154,7 @@ html {
     }
 
     #timeline .demo-card:nth-child(2) {
-        margin-top: 180px;
+        margin-top: 0;
     }
 }
 

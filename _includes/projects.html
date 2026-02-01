@@ -14,24 +14,8 @@
     {% assign projectsSorted = site.projects | sort: "start" | reverse %}
     {% assign countCard = projectsSorted | size %}
 
-    {% assign half = countCard | plus: 1 | divided_by: 2 %}
-    {% assign baseHeight = half | times: 490 %}
-    {% assign extraHeight = 0 %}
-    {% if countCard | modulo: 2 == 0 %}
-    {% assign extraHeight = 135 %}
-    {% endif %}
-    {% assign timelineHeight = baseHeight | plus: extraHeight %}
-
-    {% assign leftCount = countCard | plus: 1 | divided_by: 2 %}
-
-    <div class="demo-card-wrapper" id="demo-card-wrapper" data-children="{{ countCard }}" style="--timeline-height: {{ timelineHeight }}px;">
+    <div class="demo-card-wrapper" id="demo-card-wrapper" data-children="{{ countCard }}">
         {% for p in projectsSorted %}
-            {% assign i = forloop.index %}
-            {% if i | modulo: 2 == 1 %}
-                {% assign flexOrder = i | plus: 1 | divided_by: 2 %}
-            {% else %}
-                {% assign flexOrder = leftCount | plus: i | divided_by: 2 %}
-            {% endif %}
 
             {% assign descriptionHtml = p.content | markdownify %}
             {% assign descriptionText = descriptionHtml | strip_html | strip_newlines %}
@@ -40,7 +24,7 @@
                 {% assign resumeSentence = descriptionText | truncatewords: 22 %}
             {% endif %}
 
-            <div class="demo-card demo-card--{{ p.type }}" style="order: {{ flexOrder }};">
+            <div class="demo-card demo-card--{{ p.type }}">
                 <div class="head">
                     <div class="number-box">
                         <span>{{ p.year }}</span>
