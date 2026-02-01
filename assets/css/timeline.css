@@ -60,35 +60,43 @@ html {
 }
 
 @media (min-width: 1000px) {
+    #timeline {
+        --card-w: 450px;   /* largeur card desktop */
+        --gap-x: 180px;    /* espace total entre les 2 colonnes (réduit vs 270) */
+        --shift-y: 180px;  /* décalage vertical des cards de droite */
+        --row-gap-base: 90px;
+        --dot-size: 9px;
+    }
+
     #timeline .demo-card-wrapper {
         display: grid;
-        grid-template-columns: 450px 450px;
-        column-gap: 270px; /* 2*135: le trait est au milieu du gap */
-        row-gap: 270px;    /* 90 + 180 (décalage visuel) */
-        width: 1170px;
+        grid-template-columns: var(--card-w) var(--card-w);
+        column-gap: var(--gap-x);
+        row-gap: calc(var(--row-gap-base) + var(--shift-y));
+        width: calc((2 * var(--card-w)) + var(--gap-x));
         margin: 0 auto;
         justify-content: center;
     }
 
     #timeline .demo-card {
-        max-width: 450px;
+        max-width: var(--card-w);
         height: 400px;
         margin: 0;
     }
 
     /* Décalage "timeline" : toutes les cards à droite (paires) vers le bas */
     #timeline .demo-card:nth-child(even) {
-        transform: translateY(180px);
+        transform: translateY(var(--shift-y));
         will-change: transform;
     }
 
-    /* Remplace les valeurs "magiques" 491.5 / 489.5 par un calcul basé sur le gap */
+    /* Points centrés sur le trait (basé sur gap-x) */
     #timeline .demo-card:nth-child(odd) .head::before {
-        left: calc(100% + 135px - 4.5px); /* 135 = moitié du gap ; 4.5 = moitié du point (9px) */
+        left: calc(100% + (var(--gap-x) / 2) - (var(--dot-size) / 2));
     }
 
     #timeline .demo-card:nth-child(even) .head::before {
-        right: calc(100% + 135px - 4.5px);
+        right: calc(100% + (var(--gap-x) / 2) - (var(--dot-size) / 2));
     }
 }
 
@@ -471,16 +479,4 @@ https://codepen.io/ArnaudBalland/pen/vGZKLr
 .modal .modal-footer a:hover {
     text-decoration: none;
     background-color: rgba(0, 0, 0, .5);
-}
-
-/* Sécurisation: on force le décalage "timeline" en dernier dans la cascade */
-@media (min-width: 1000px) {
-    #timeline .demo-card-wrapper {
-        row-gap: 270px; /* 90 + 180 (décalage visuel) */
-    }
-
-    #timeline .demo-card:nth-child(even) {
-        transform: translateY(180px);
-        will-change: transform;
-    }
 }
