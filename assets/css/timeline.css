@@ -64,7 +64,7 @@ html {
         display: grid;
         grid-template-columns: 1fr 1fr;
         column-gap: 180px;
-        row-gap: 90px;
+        row-gap: 270px; /* 90 + 180 (décalage vers le bas) */
         width: 1170px;
         margin: 0 auto;
     }
@@ -75,8 +75,9 @@ html {
         margin: 0;
     }
 
-    #timeline .demo-card:nth-child(2) {
-        margin-top: 180px;
+    /* Décalage "timeline" : toutes les cards à droite (paires) vers le bas */
+    #timeline .demo-card:nth-child(even) {
+        transform: translateY(180px);
     }
 }
 
@@ -151,10 +152,6 @@ html {
 
     #timeline .demo-card:nth-child(even) .head::before {
         right: 489.5px;
-    }
-
-    #timeline .demo-card:nth-child(2) {
-        margin-top: 0;
     }
 }
 
@@ -471,4 +468,16 @@ https://codepen.io/ArnaudBalland/pen/vGZKLr
 .modal .modal-footer a:hover {
     text-decoration: none;
     background-color: rgba(0, 0, 0, .5);
+}
+
+/* Sécurisation: on force le décalage "timeline" en dernier dans la cascade */
+@media (min-width: 1000px) {
+    #timeline .demo-card-wrapper {
+        row-gap: 270px; /* 90 + 180 (décalage visuel) */
+    }
+
+    #timeline .demo-card:nth-child(even) {
+        transform: translateY(180px);
+        will-change: transform;
+    }
 }
