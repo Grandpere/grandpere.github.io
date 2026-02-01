@@ -1,0 +1,233 @@
+---
+layout: default
+title: Validation des projets
+permalink: /_validate/projects/
+robots: noindex
+sitemap: false
+---
+
+<section style="padding: 40px 0;">
+    <div class="container">
+        <h1>Validation — Projects</h1>
+        <p>Page technique (noindex). Corrige les erreurs listées ci-dessous.</p>
+
+        {% assign allowedTypes = "|perso|stage|formation|cdi|cdd|" %}
+        {% assign seenPids = "|" %}
+        {% assign hasErrors = false %}
+        {% assign hasWarnings = false %}
+
+        {% assign dash = "-" %}
+
+    <h2>Contrôles</h2>
+    <ul>
+      {% assign projectsSorted = site.projects | sort: "start" | reverse %}
+      {% for p in projectsSorted %}
+        {% assign currentErrors = "" %}
+        {% assign currentWarnings = "" %}
+
+        {% comment %} pid (slug) {% endcomment %}
+        {% if p.pid == nil or p.pid == "" %}
+        {% assign currentErrors = currentErrors | append: "pid manquant (slug); " %}
+        {% else %}
+          {% assign pidString = p.pid | append: "" %}
+
+          {% comment %} uniqueness {% endcomment %}
+          {% capture pidToken %}|{{ p.pid }}|{% endcapture %}
+          {% if seenPids contains pidToken %}
+            {% assign currentErrors = currentErrors | append: "pid en double (" | append: pidString | append: "); " %}
+          {% else %}
+            {% assign seenPids = seenPids | append: pidString | append: "|" %}
+          {% endif %}
+        {% endif %}
+
+        {% comment %}
+        slug check:
+        - allowed: a-z, 0-9, -
+        We'll detect invalid chars by removing allowed chars; remaining => invalid.
+        {% endcomment %}
+        {% assign pidInvalid = pidString
+        | remove: "a" | remove: "b" | remove: "c" | remove: "d" | remove: "e"
+        | remove: "f" | remove: "g" | remove: "h" | remove: "i" | remove: "j"
+        | remove: "k" | remove: "l" | remove: "m" | remove: "n" | remove: "o"
+        | remove: "p" | remove: "q" | remove: "r" | remove: "s" | remove: "t"
+        | remove: "u" | remove: "v" | remove: "w" | remove: "x" | remove: "y"
+        | remove: "z"
+        | remove: "0" | remove: "1" | remove: "2" | remove: "3" | remove: "4"
+        | remove: "5" | remove: "6" | remove: "7" | remove: "8" | remove: "9"
+        | remove: "-" %}
+
+        {% if pidInvalid != "" %}
+        {% assign currentErrors = currentErrors | append: "pid invalide (utilise uniquement [a-z0-9-], actuel: " | append: pidString | append: "); " %}
+        {% endif %}
+
+        {% assign pidLower = pidString | downcase %}
+        {% if pidLower != pidString %}
+        {% assign currentWarnings = currentWarnings | append: "pid devrait être en minuscules (actuel: " | append: pidString | append: "); " %}
+        {% endif %}
+        {% endif %}
+
+        {% comment %} type {% endcomment %}
+        {% if p.type == nil or p.type == "" %}
+          {% assign currentErrors = currentErrors | append: "type manquant; " %}
+        {% else %}
+          {% capture typeToken %}|{{ p.type }}|{% endcapture %}
+          {% unless allowedTypes contains typeToken %}
+            {% assign currentErrors = currentErrors | append: "type inconnu (" | append: p.type | append: "); " %}
+          {% endunless %}
+        {% endif %}
+
+        {% comment %} champs de base {% endcomment %}
+        {% if p.title == nil or p.title == "" %}
+          {% assign currentErrors = currentErrors | append: "title manquant; " %}
+        {% endif %}
+        {% if p.start == nil or p.start == "" %}
+          {% assign currentErrors = currentErrors | append: "start manquant (YYYY-MM); " %}
+        {% endif %}
+        {% if p.year == nil or p.year == "" %}
+          {% assign currentErrors = currentErrors | append: "year manquant; " %}
+        {% endif %}
+        {% if p.period == nil or p.period == "" %}
+          {% assign currentErrors = currentErrors | append: "period manquant; " %}
+        {% endif %}
+        {% if p.cover == nil or p.cover == "" %}
+          {% assign currentErrors = currentErrors | append: "cover manquant; " %}
+        {% endif %}
+
+        {% comment %} strict YYYY-MM for start/end + end<start warning (same as before) {% endcomment %}
+        {% assign startStr = p.start | default: "" | append: "" %}
+        {% if startStr != "" %}
+          {% assign startLen = startStr | size %}
+          {% if startLen != 7 %}
+            {% assign currentErrors = currentErrors | append: "start invalide (format attendu YYYY-MM, actuel: " | append: startStr | append: "); " %}
+          {% else %}
+            {% assign startYear = startStr | slice: 0, 4 %}
+            {% assign startDash = startStr | slice: 4, 1 %}
+            {% assign startMonth = startStr | slice: 5, 2 %}
+
+            {% assign yearDigitsOnly = startYear | remove: "0" | remove: "1" | remove: "2" | remove: "3" | remove: "4" | remove: "5" | remove: "6" | remove: "7" | remove: "8" | remove: "9" %}
+            {% assign monthDigitsOnly = startMonth | remove: "0" | remove: "1" | remove: "2" | remove: "3" | remove: "4" | remove: "5" | remove: "6" | remove: "7" | remove: "8" | remove: "9" %}
+
+            {% if startDash != dash or yearDigitsOnly != "" or monthDigitsOnly != "" %}
+              {% assign currentErrors = currentErrors | append: "start invalide (format attendu YYYY-MM, actuel: " | append: startStr | append: "); " %}
+            {% else %}
+              {% assign startMonthNum = startMonth | plus: 0 %}
+              {% if startMonthNum < 1 or startMonthNum > 12 %}
+                {% assign currentErrors = currentErrors | append: "start invalide (mois hors 01..12, actuel: " | append: startStr | append: "); " %}
+              {% endif %}
+            {% endif %}
+          {% endif %}
+        {% endif %}
+
+        {% assign endStr = p.end | default: "" | append: "" %}
+        {% if endStr != "" %}
+          {% assign endLen = endStr | size %}
+          {% if endLen != 7 %}
+            {% assign currentErrors = currentErrors | append: "end invalide (format attendu YYYY-MM, actuel: " | append: endStr | append: "); " %}
+          {% else %}
+            {% assign endYear = endStr | slice: 0, 4 %}
+            {% assign endDash = endStr | slice: 4, 1 %}
+            {% assign endMonth = endStr | slice: 5, 2 %}
+
+            {% assign endYearDigitsOnly = endYear | remove: "0" | remove: "1" | remove: "2" | remove: "3" | remove: "4" | remove: "5" | remove: "6" | remove: "7" | remove: "8" | remove: "9" %}
+            {% assign endMonthDigitsOnly = endMonth | remove: "0" | remove: "1" | remove: "2" | remove: "3" | remove: "4" | remove: "5" | remove: "6" | remove: "7" | remove: "8" | remove: "9" %}
+
+            {% if endDash != dash or endYearDigitsOnly != "" or endMonthDigitsOnly != "" %}
+              {% assign currentErrors = currentErrors | append: "end invalide (format attendu YYYY-MM, actuel: " | append: endStr | append: "); " %}
+            {% else %}
+              {% assign endMonthNum = endMonth | plus: 0 %}
+              {% if endMonthNum < 1 or endMonthNum > 12 %}
+                {% assign currentErrors = currentErrors | append: "end invalide (mois hors 01..12, actuel: " | append: endStr | append: "); " %}
+              {% endif %}
+            {% endif %}
+          {% endif %}
+        {% endif %}
+
+        {% if startStr != "" and endStr != "" %}
+          {% assign startLen2 = startStr | size %}
+          {% assign endLen2 = endStr | size %}
+          {% if startLen2 == 7 and endLen2 == 7 %}
+            {% if endStr < startStr %}
+              {% assign currentWarnings = currentWarnings | append: "end < start (" | append: startStr | append: " → " | append: endStr | append: "); " %}
+            {% endif %}
+          {% endif %}
+        {% endif %}
+
+        {% comment %} cohérence chemins {% endcomment %}
+        {% if p.cover and p.cover != "" %}
+          {% unless p.cover contains "/assets/" %}
+            {% assign currentWarnings = currentWarnings | append: "cover devrait être un chemin /assets/... (actuel: " | append: p.cover | append: "); " %}
+          {% endunless %}
+          {% unless p.cover contains "/" %}
+            {% assign currentWarnings = currentWarnings | append: "cover devrait commencer par / (actuel: " | append: p.cover | append: "); " %}
+          {% endunless %}
+        {% endif %}
+
+        {% comment %} links {% endcomment %}
+        {% if p.links %}
+          {% for l in p.links %}
+            {% if l.url == nil or l.url == "" %}
+              {% assign currentErrors = currentErrors | append: "links[].url manquant; " %}
+            {% endif %}
+            {% if l.value == nil or l.value == "" %}
+              {% assign currentErrors = currentErrors | append: "links[].value manquant; " %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+
+        {% comment %} media {% endcomment %}
+        {% if p.media %}
+          {% for m in p.media %}
+            {% if m.url == nil or m.url == "" %}
+              {% assign currentErrors = currentErrors | append: "media[].url manquant; " %}
+            {% else %}
+              {% unless m.url contains "/assets/" %}
+                {% assign currentWarnings = currentWarnings | append: "media[].url devrait être /assets/... (actuel: " | append: m.url | append: "); " %}
+              {% endunless %}
+              {% unless m.url contains "/" %}
+                {% assign currentWarnings = currentWarnings | append: "media[].url devrait commencer par / (actuel: " | append: m.url | append: "); " %}
+              {% endunless %}
+            {% endif %}
+            {% if m.alt == nil or m.alt == "" %}
+              {% assign currentWarnings = currentWarnings | append: "media[].alt manquant; " %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+
+        {% if currentErrors != "" %}
+          {% assign hasErrors = true %}
+          <li>
+            <strong>{{ p.title | default: p.path }}</strong>
+            <div><code>{{ p.path }}</code></div>
+            <div style="color:#b00020;"><strong>ERREURS:</strong> {{ currentErrors }}</div>
+            {% if currentWarnings != "" %}
+              {% assign hasWarnings = true %}
+              <div style="color:#8a5a00;"><strong>WARNINGS:</strong> {{ currentWarnings }}</div>
+            {% endif %}
+          </li>
+        {% else %}
+          <li>
+            <strong>{{ p.title }}</strong> — OK
+            {% if currentWarnings != "" %}
+              {% assign hasWarnings = true %}
+              <div style="color:#8a5a00;"><strong>WARNINGS:</strong> {{ currentWarnings }}</div>
+            {% endif %}
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    <hr>
+
+    {% if hasErrors %}
+      <p style="color:#b00020;"><strong>Des erreurs ont été détectées.</strong> Corrige-les puis recharge cette page.</p>
+    {% else %}
+      <p style="color:#1b7f3a;"><strong>Aucune erreur bloquante.</strong></p>
+    {% endif %}
+
+    {% if hasWarnings %}
+      <p style="color:#8a5a00;"><strong>Des warnings existent.</strong> Recommandé de corriger pour homogénéiser.</p>
+    {% else %}
+      <p style="color:#1b7f3a;"><strong>Aucun warning.</strong></p>
+    {% endif %}
+  </div>
+</section>

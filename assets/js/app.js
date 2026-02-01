@@ -2,7 +2,7 @@ let app = {
     init: function () {
         app.currentYear();
         app.addListeners();
-        cv.init();
+        //cv.init();
     },
     addListeners: function () {
         $('#formspree_name').on('input', app.handleValidateName);

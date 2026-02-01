@@ -1,17 +1,24 @@
-<section id=timeline>
+<section id="experiences">
     <h2>Expériences</h2>
-    <div class="timeline-legend_container">
-        <h4 class="timeline-legend_title">Légende</h4>
-        <div class="timeline-legend_content">
-            <span class="legend demo-card--cdi" data-toggle="tooltip" data-placement="bottom" title="CDI">CDI</span>
-            <span class="legend demo-card--cdd" data-toggle="tooltip" data-placement="bottom" title="CDD">CDD</span>
-            <span class="legend demo-card--stage" data-toggle="tooltip" data-placement="bottom" title="Stage">Stage</span>
-            <span class="legend demo-card--formation" data-toggle="tooltip" data-placement="bottom" title="formation">Formation</span>
-            <span class="legend demo-card--perso" data-toggle="tooltip" data-placement="bottom" title="Projet personnel">Perso</span>
-        </div>
-    </div>
 
-    <div class="demo-card-wrapper" id="demo-card-wrapper">
-        <!-- experiences here -->
-    </div>
+    {% for exp in site.experiences %}
+    <article class="experience">
+        <header>
+            <h3>{{ exp.title }}</h3>
+            <span>{{ exp.company }} — {{ exp.start-date }} / {{ exp.end-date }}</span>
+        </header>
+
+        <div class="experience-content">
+            {{ exp.content }}
+        </div>
+
+        {% if exp.tech %}
+        <ul class="tech-list">
+            {% for tech in exp.tech %}
+            <li>{{ tech }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </article>
+    {% endfor %}
 </section>

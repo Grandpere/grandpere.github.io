@@ -1,3 +1,13 @@
 title: Portfolio
 description: Portfolio de Grandpere
-theme: minima
+#theme: minima
+
+collections:
+  experiences:
+    output: false
+    sort_by: order
+  projects:
+    output: false
+    sort_by: order
+  cv:
+    output: false
