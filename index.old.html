@@ -26,21 +26,16 @@
 </head>
 
 <body>
-    {% include 'header.html' %}
-
+    {% include header.html %}
     <main>
-        {% include 'about.html' %}
-        {% include 'summary.html' %}
-        {% include 'experiences.html' %}
-
-        <div class="container">
-            {% include 'skills.html' %}
-            {% include 'contact.html' %}
-        </div>
+        {% include about.html %}
+        {% include summary.html %}
+        {% include experiences.html %}
+        {% include skills_contact_container.html %}
     </main>
-    {% include 'footer.html' %}
-    {% include 'card_template.html' %}
-    {% include 'modal.html' %}
+    {% include footer.html %}
+    {% include card_template.html %}
+    {% include modal.html %}
 
     <!-- Loader -->
     <div class="loader-wrapper">
