@@ -69,7 +69,7 @@ html {
         -ms-flex-flow: column wrap;
         flex-flow: column wrap;
         width: 1170px;
-        /*height: 2140px; /* card size 400 + 90 padding so add 490px per card */
+        height: var(--timeline-height);
         margin: 0 auto;
     }
 }

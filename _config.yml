@@ -11,3 +11,6 @@ collections:
     sort_by: order
   cv:
     output: false
+
+include:
+  - _pages

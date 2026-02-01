@@ -13,9 +13,18 @@
 
     {% assign projectsSorted = site.projects | sort: "start" | reverse %}
     {% assign countCard = projectsSorted | size %}
+
+    {% assign half = countCard | plus: 1 | divided_by: 2 %}
+    {% assign baseHeight = half | times: 490 %}
+    {% assign extraHeight = 0 %}
+    {% if countCard | modulo: 2 == 0 %}
+    {% assign extraHeight = 135 %}
+    {% endif %}
+    {% assign timelineHeight = baseHeight | plus: extraHeight %}
+
     {% assign leftCount = countCard | plus: 1 | divided_by: 2 %}
 
-    <div class="demo-card-wrapper" id="demo-card-wrapper" data-children="{{ countCard }}">
+    <div class="demo-card-wrapper" id="demo-card-wrapper" data-children="{{ countCard }}" style="--timeline-height: {{ timelineHeight }}px;">
         {% for p in projectsSorted %}
             {% assign i = forloop.index %}
             {% if i | modulo: 2 == 1 %}
