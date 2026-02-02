@@ -3,6 +3,8 @@ description: Portfolio de Grandpere
 #theme: minima
 
 collections:
+  resume:
+    output: false
   experiences:
     output: false
     sort_by: order

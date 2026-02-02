@@ -145,6 +145,10 @@ html {
         margin: 0;
     }
 
+    #timeline .demo-card:nth-child(1) {
+        margin-top: 45px;
+    }
+
     #timeline .demo-card:nth-child(odd) {
         margin-right: 0;
     }
