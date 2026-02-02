@@ -42,7 +42,7 @@ html {
 }
 
 #timeline {
-    padding: 100px 0;
+    padding: 100px 0 220px 0;
     background: #f7f7f7;
     border-top: 1px solid rgba(191, 191, 191, 0.4);
     border-bottom: 1px solid rgba(191, 191, 191, 0.4);
@@ -62,9 +62,9 @@ html {
 @media (min-width: 1000px) {
     #timeline {
         --card-w: 450px;   /* largeur card desktop */
-        --gap-x: 180px;    /* espace total entre les 2 colonnes (réduit vs 270) */
-        --shift-y: 180px;  /* décalage vertical des cards de droite */
-        --row-gap-base: 90px;
+        --gap-x: 100px;    /* espace total entre les 2 colonnes */
+        --shift-y: 120px;  /* décalage vertical des cards de droite */
+        --row-gap-base: -40px;
         --dot-size: 9px;
     }
 
