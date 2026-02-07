@@ -223,7 +223,103 @@ ul {
 }
 
 /* EXPERIENCES */
-/* moved in timeline.css */
+#experiences {
+    background-color: #f7f7f7;
+    border-top: 1px solid rgba(191, 191, 191, 0.4);
+    border-bottom: 1px solid rgba(191, 191, 191, 0.4);
+}
+
+#experiences .experience {
+    background: #fff;
+    border: 1px solid rgba(191, 191, 191, 0.4);
+    -webkit-box-shadow: 0px 1px 22px 4px rgba(0, 0, 0, 0.07);
+    box-shadow: 0px 1px 22px 4px rgba(0, 0, 0, 0.07);
+    padding: 1.5rem;
+    margin: 1.5rem auto;
+    max-width: 980px;
+}
+
+#experiences .experience header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: .25rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#experiences .experience header h3 {
+    padding: 0;
+    margin: 0;
+    text-align: inherit;
+}
+
+#experiences .experience header span {
+    color: #666;
+    font-size: .95rem;
+}
+
+#experiences .experience-content {
+    color: #222;
+    line-height: 1.5;
+}
+
+#experiences .experience-content p {
+    margin-bottom: .75rem;
+}
+
+#experiences .experience-content ul {
+    list-style: disc;
+    padding-left: 1.2rem;
+    margin: 0 0 .75rem;
+}
+
+#experiences .experience-content li {
+    margin-bottom: .35rem;
+}
+
+#experiences .tech-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin: 1rem 0 0;
+    padding: 0;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+#experiences .tech-list li {
+    background: #e9f7f0;
+    border: 1px solid #30cc8b;
+    color: #1d7f58;
+    padding: .25rem .65rem;
+    border-radius: 999px;
+    font-size: .85rem;
+    line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+    #experiences .experience header {
+        text-align: left;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+    }
+
+    #experiences .tech-list {
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+    }
+}
 
 /* COMPETENCES */
 #competences .row>.card {

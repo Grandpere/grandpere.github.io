@@ -1,2 +1,6 @@
 .idea
+.bundle/
+vendor/bundle/
+.jekyll-cache/
+_site/
 test.html
