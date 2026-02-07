@@ -1,7 +1,9 @@
 <section id="experiences">
     <h2>Expériences</h2>
 
-    {% for exp in site.experiences %}
+    {% assign experiencesSorted = site.experiences | sort: "order" %}
+
+    {% for exp in experiencesSorted %}
     <article class="experience">
         <header>
             <h3>{{ exp.title }}</h3>
