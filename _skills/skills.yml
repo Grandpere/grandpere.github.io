@@ -1,0 +1,212 @@
+- category: Langages
+  skills:
+    - label: PHP
+      icon: fa-brands fa-php
+    - label: JavaScript
+      image: assets/images/skills/javascript.svg
+      alt: Logo JavaScript
+      colored: true
+    - label: TypeScript
+      image: assets/images/skills/typescript.svg
+      alt: Logo TypeScript
+      colored: true
+    - label: Go
+      icon: fa-brands fa-golang
+    - label: C#
+      image: assets/images/skills/csharp.svg
+      alt: Logo C#
+      colored: true
+- category: Frameworks & Librairies
+  skills:
+    - label: Symfony
+      icon: fa-brands fa-symfony
+    - label: React
+      image: assets/images/skills/react.svg
+      alt: Logo React
+      colored: true
+    - label: Bootstrap
+      image: assets/images/skills/bootstrap.svg
+      alt: Logo Bootstrap
+      colored: true
+    - label: Bulma
+      image: assets/images/skills/bulma.svg
+      alt: Logo Bulma
+      colored: true
+    - label: ASP.NET
+      image: assets/images/skills/aspnet.svg
+      alt: Logo ASP.NET
+      colored: true
+    - label: .NET
+      image: assets/images/skills/dotnet.svg
+      alt: Logo .NET
+      colored: true
+    - label: API Platform
+      image: assets/images/skills/apiplatform.svg
+      alt: Logo de la technologie API Platform
+      colored: true
+    - label: Doctrine
+      image: assets/images/skills/doctrine.svg
+      alt: Logo de la technologie Doctrine
+      colored: true
+    - label: Twig
+      image: assets/images/skills/twig.svg
+      alt: Logo de la technologie Twig
+      colored: true
+- category: Front & UI
+  skills:
+    - label: HTML5
+      image: assets/images/skills/html5.svg
+      alt: Logo HTML5
+      colored: true
+    - label: CSS3
+      image: assets/images/skills/css3.svg
+      alt: Logo CSS3
+      colored: true
+    - label: jQuery
+      image: assets/images/skills/jquery.svg
+      alt: Logo de la technologie jQuery
+    - label: Ajax
+      image: assets/images/skills/ajax.svg
+      alt: Logo de la technologie Ajax
+- category: Data & Messaging
+  skills:
+    - label: SQL
+      image: assets/images/skills/sql.svg
+      alt: Logo de la technologie SQL
+    - label: MySQL
+      image: assets/images/skills/mysql.svg
+      alt: Logo de la technologie MySQL
+    - label: PostgreSQL
+      image: assets/images/skills/postgresql.svg
+      alt: Logo PostgreSQL
+      colored: true
+    - label: SQL Server
+      image: assets/images/skills/sqlserver.svg
+      alt: Logo SQL Server
+      colored: true
+    - label: Redis
+      image: assets/images/skills/redis.svg
+      alt: Logo Redis
+      colored: true
+    - label: RabbitMQ
+      image: assets/images/skills/rabbitmq.svg
+      alt: Logo RabbitMQ
+      colored: true
+    - label: GraphQL
+      image: assets/images/skills/graphql.svg
+      alt: Logo GraphQL
+      colored: true
+- category: Architecture & Patterns
+  skills:
+    - label: POO
+      image: assets/images/skills/custom/poo.svg
+      alt: Logo POO
+    - label: Architecture MVC
+      image: assets/images/skills/custom/mvc.svg
+      alt: Logo Architecture MVC
+    - label: REST API
+      image: assets/images/skills/rest.svg
+      alt: Logo REST API
+      colored: true
+    - label: Clean Architecture
+      image: assets/images/skills/custom/clean-arch.svg
+      alt: Logo Clean Architecture
+    - label: DDD
+      image: assets/images/skills/custom/ddd.svg
+      alt: Logo DDD
+    - label: CQRS
+      image: assets/images/skills/custom/cqrs.svg
+      alt: Logo CQRS
+    - label: Event Sourcing
+      image: assets/images/skills/custom/event-sourcing.svg
+      alt: Logo Event Sourcing
+- category: Outils
+  skills:
+    - label: Git
+      image: assets/images/skills/git.svg
+      alt: Logo Git
+      colored: true
+    - label: GitHub
+      image: assets/images/skills/github.svg
+      alt: Logo GitHub
+      colored: true
+    - label: GitHub Actions
+      image: assets/images/skills/github-actions.svg
+      alt: Logo GitHub Actions
+      colored: true
+    - label: BitBucket
+      image: assets/images/skills/bitbucket.svg
+      alt: Logo BitBucket
+      colored: true
+    - label: Docker
+      image: assets/images/skills/docker.svg
+      alt: Logo de Docker
+      colored: true
+    - label: Docker Compose
+      image: assets/images/skills/docker-compose.svg
+      alt: Logo de l'outil Docker compose
+    - label: Composer
+      image: assets/images/skills/composer.svg
+      alt: Logo de la technologie Composer
+      colored: true
+    - label: WebPack Encore
+      image: assets/images/skills/webpack.svg
+      alt: Logo de la technologie Webpack
+      colored: true
+    - label: VS Code
+      image: assets/images/skills/vscode.svg
+      alt: Logo de l'outil VSCode
+      colored: true
+    - label: PHPStorm
+      image: assets/images/skills/phpstorm.svg
+      alt: Logo de l'outil PHPStorm
+      colored: true
+    - label: Goland
+      image: assets/images/skills/goland.svg
+      alt: Logo de l'outil Goland
+      colored: true
+    - label: IIS
+      image: assets/images/skills/custom/iis.svg
+      alt: Logo IIS
+- category: Méthodo & Qualité
+  skills:
+    - label: Gestion de projet
+      image: assets/images/skills/project.svg
+      alt: Logo Gestion de projet
+      colored: true
+    - label: Documentation
+      image: assets/images/skills/doc.svg
+      alt: Logo Documentation
+      colored: true
+    - label: Suivi des bugs
+      image: assets/images/skills/bugs-search.svg
+      alt: Logo Suivi des bugs
+      colored: true
+    - label: Amélioration continue
+      image: assets/images/skills/progress.svg
+      alt: Logo Amélioration continue
+      colored: true
+    - label: Amélioration de la qualité
+      image: assets/images/skills/quality.svg
+      alt: Logo Amélioration de la qualité
+      colored: true
+    - label: Amélioration des performances
+      image: assets/images/skills/performance.svg
+      alt: Logo Amélioration des performances
+      colored: true
+    - label: Communication
+      image: assets/images/skills/communication.svg
+      alt: Logo Communication
+      colored: true
+    - label: CI/CD
+      image: assets/images/skills/cicd.svg
+      alt: Logo CI/CD
+      colored: true
+- category: Certification
+  skills:
+    - label: Opquast
+      image: https://res.cloudinary.com/opquast/image/upload/c_fill,h_130,w_130/v1/badges/expert.svg
+      alt: logo représentant le niveau de certification Opquast de Lorenzo Marozzo
+      link: https://directory.opquast.com/fr/certificat/0CMUEW/
+      title: "Opquast certified : Maîtrise de la qualité en projet Web - 915 points"
+      colored: true

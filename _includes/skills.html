@@ -1,96 +1,24 @@
 <section id="competences">
     <h2>Compétences</h2>
-    <div class="row justify-content-center">
-        <div class="card col-12 col-lg-2">
-            <i class="fab fa-php fa-4x"></i>
-            <p class="card-title">PHP</p>
+    {% for category in site.data.skills %}
+        <h3 class="skills-category">{{ category.category }}</h3>
+        <div class="row justify-content-center">
+            {% for skill in category.skills %}
+            <div class="card col-12 col-lg-2"{% if skill.title %} data-toggle="tooltip" title="{{ skill.title }}"{% endif %}>
+                {% if skill.link %}<a href="{{ skill.link }}">{% endif %}
+                {% if skill.image %}
+                    <img src="{{ skill.image }}"
+                         class="card-img-top{% if skill.colored %} colored{% endif %}{% if skill.image contains 'assets/images/skills/custom/' %} no-filter{% endif %}"
+                         alt="{% if skill.alt %}{{ skill.alt }}{% else %}Logo {{ skill.label }}{% endif %}">
+                {% elsif skill.icon %}
+                    <i class="{{ skill.icon }} fa-4x"></i>
+                {% else %}
+                    <div class="skill-placeholder">{{ skill.label | slice: 0, 2 }}</div>
+                {% endif %}
+                {% if skill.link %}</a>{% endif %}
+                <p class="card-title">{{ skill.label }}</p>
+            </div>
+            {% endfor %}
         </div>
-        <div class="card col-12 col-lg-2">
-            <i class="fab fa-symfony fa-4x"></i>
-            <p class="card-title">Symfony</p>
-        </div>
-        <div class="card col-12 col-lg-2">
-            <img src="assets/images/skills/doctrine.svg" class="card-img-top" alt="Logo de la technologie Doctrine">
-            <p class="card-title">Doctrine</p>
-        </div>
-        <div class="card col-12 col-lg-2">
-            <img src="assets/images/skills/sql.svg" class="card-img-top" alt="Logo de la technologie SQL">
-            <p class="card-title">SQL</p>
-        </div>
-        <div class="card col-12 col-lg-2">
-            <img src="assets/images/skills/mysql.svg" class="card-img-top" alt="Logo de la technologie MySQL">
-            <p class="card-title">mySQL</p>
-        </div>
-        <div class="card col-12 col-lg-2">
-            <i class="fab fa-js fa-4x"></i>
-            <p class="card-title">JavaScript</p>
-        </div>
-        <div class="card col-12 col-lg-2">
-            <img src="assets/images/skills/jquery.svg" class="card-img-top" alt="Logo de la technologie jQuery">
-            <p class="card-title">jQuery</p>
-        </div>
-        <div class="card col-12 col-lg-2">
-            <img src="assets/images/skills/ajax.svg" class="card-img-top" alt="Logo de la technologie Ajax">
-            <p class="card-title">Ajax</p>
-        </div>
-        <div class="card col-12 col-lg-2">
-            <i class="fab fa-html5 fa-4x"></i>
-            <p class="card-title">HTML5</p>
-        </div>
-        <div class="card col-12 col-lg-2">
-            <img src="assets/images/skills/twig.svg" class="card-img-top colored" alt="Logo de la technologie Twig">
-            <p class="card-title">Twig</p>
-        </div>
-        <div class="card col-12 col-lg-2">
-            <i class="fab fa-css3-alt fa-4x"></i>
-            <p class="card-title">CSS3</p>
-        </div>
-        <div class="card col-12 col-lg-2">
-            <i class="fab fa-git fa-4x"></i>
-            <p class="card-title">Git</p>
-        </div>
-        <div class="card col-12 col-lg-2">
-            <i class="fab fa-github fa-4x"></i>
-            <p class="card-title">Github</p>
-        </div>
-        <div class="card col-12 col-lg-2">
-            <i class="fab fa-bitbucket fa-4x"></i>
-            <p class="card-title">BitBucket</p>
-        </div>
-        <div class="card col-12 col-lg-2">
-            <i class="fab fa-docker fa-4x"></i>
-            <p class="card-title">Docker</p>
-        </div>
-        <div class="card col-12 col-lg-2">
-            <img src="assets/images/skills/docker-compose.svg" class="card-img-top" alt="Logo de la technologie Docker compose">
-            <p class="card-title">Docker Compose</p>
-        </div>
-        <div class="card col-12 col-lg-2">
-            <img src="assets/images/skills/composer.svg" class="card-img-top" alt="Logo de la technologie Composer">
-            <p class="card-title">Composer</p>
-        </div>
-        <div class="card col-12 col-lg-2">
-            <img src="assets/images/skills/webpack.svg" class="card-img-top" alt="Logo de la technologie Webpack">
-            <p class="card-title">WebPack Encore</p>
-        </div>
-        <div class="card col-12 col-lg-2">
-            <img src="assets/images/skills/apiplatform.svg" class="card-img-top colored" alt="Logo de la technologie API Platform">
-            <p class="card-title">Api Platform</p>
-        </div>
-        <div class="card col-12 col-lg-2">
-            <img src="assets/images/skills/vscode.svg" class="card-img-top" alt="Logo de l'outil VSCode">
-            <p class="card-title">VS Code</p>
-        </div>
-        <div class="card col-12 col-lg-2">
-            <img src="assets/images/skills/phpstorm.svg" class="card-img-top" alt="Logo de l'outil PHPStorm">
-            <p class="card-title">PHPStorm</p>
-        </div>
-        <div class="card col-12 col-lg-2" data-toggle="tooltip"
-             title="Opquast certified : Maîtrise de la qualité en projet Web - 915 points">
-            <a href="https://directory.opquast.com/fr/certificat/0CMUEW/"><img class="colored"
-                                                                               src="https://res.cloudinary.com/opquast/image/upload/c_fill,h_130,w_130/v1/badges/expert.svg"
-                                                                               alt="logo représentant le niveau de certification Opquast de Lorenzo Marozzo"></a>
-            <p class="card-title">Opquast</p>
-        </div>
-    </div>
+    {% endfor %}
 </section>

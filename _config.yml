@@ -16,3 +16,5 @@ collections:
 
 include:
   - _pages
+
+data_dir: _skills

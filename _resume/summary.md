@@ -6,10 +6,8 @@ localisation: "Ile de France"
 resume-link: /assets/files/Marozzo-Lorenzo.pdf
 resume-link-text: Télécharger mon CV au format PDF
 ---
-Motivé, organisé, rigoureux et bien évidemment passionné par le web, j'aime découvrir de nouvelles technologies et outils qui nous permettent de faciliter notre quotidien.
+Développeur backend PHP / Symfony, j’interviens sur des environnements techniques complexes où la stabilité, la performance et la qualité du code sont aussi importantes que la livraison de nouvelles fonctionnalités.
 
-J'ai suivi initialement un cursus Informatique que je n'ai pas eu la possibilité d'exploiter dans ma vie professionnelle. L'informatique et le web étant mon domaine de prédilection, j'ai repris en 2019 dans cette direction en suivant une formation de Développeur Web afin de me remettre à niveau.
+J’ai participé à la réorganisation d’un système d’information composé de nombreux services fragmentés, avec pour objectif de simplifier l’existant, fiabiliser les APIs internes et publiques et réduire les incidents en production. J’évolue dans des architectures distribuées en appliquant des principes tels que DDD, CQRS, Event-Driven et une approche proche de la Clean Architecture.
 
-J'ai donc terminé cette formation de 6 mois, obtenu le titre professionnel de Développeur Web et Web Mobile niveau III et la certification Opquast niveau Expert (915/1000).
-
-Je suis maintenant à la recherche d'opportunité en tant que développeur PHP Symfony qui sont un langage et un framework que j'apprécie beaucoup.
+Sensible aux enjeux de qualité logicielle, je contribue à la mise en place de tests automatisés, à la prévention des régressions et à l’amélioration continue via le refactoring, la CI/CD et les revues de code. À l’aise dans des équipes produit, je travaille en collaboration avec les équipes techniques et métiers pour construire des solutions fiables, scalables et alignées avec les besoins business.
